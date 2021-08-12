@@ -64,7 +64,27 @@ get_header(); ?>
 				<?php $text_field = get_field( "text_field" );?>
 				<?php $editable_text = get_field( "editable_text" );?>
 				<?php $image_field = get_field( "image_field" );?>
-				<?php echo $text_field; ?>
+				<?php if($text_field || $editable_text || $image_field){?>
+					<div>
+						<?php if( $text_field ) { ?>
+							<h2> <?php echo $text_field; ?> </h2>
+						<?php } ?>
+						<div class="imageTextContainer">
+							<?php if( $editable_text ) { ?>
+								<div class="textContainer"> 
+									<?php echo $editable_text; ?>
+								</div>
+							<?php } ?>
+							
+							<?php if( $image_field ) { ?>
+								<div class="imageContainer"> 
+									<img src="<?php echo $image_field["url"];?>"/>
+								</div>
+							<?php } ?>
+						</div>
+					</div>
+
+				<?php }?>
 		<?php endwhile; ?>
 
 </div><!-- .site-content -->
